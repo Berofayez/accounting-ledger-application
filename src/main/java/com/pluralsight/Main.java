@@ -6,8 +6,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
     static Scanner scanner = new Scanner(System.in);
@@ -31,7 +29,7 @@ public class Main {
                     addDeposit();
                     break;
                 case "P":
-                    System.out.println("payment still not there");
+                    makePayment();
                     break;
                 case "L":
                     System.out.println("Ledger still not there");
@@ -48,6 +46,34 @@ public class Main {
 
     }
 
+    static void makePayment() {
+        System.out.println("Enter description for your payment: ");
+        String description = scanner.nextLine();
+
+        System.out.println("Enter the vendor: ");
+        String vendor = scanner.nextLine();
+
+        System.out.println("Enter amount: ");
+        double amount = scanner.nextDouble();
+
+        Transaction transaction = new Transaction(LocalDate.now(), LocalTime.now(), description, vendor, -amount);
+
+        String line = transaction.toCsvFormat();
+
+        try{
+            FileWriter fileWriter = new FileWriter("data/transactions.csv", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            bufferedWriter.write(line);
+            bufferedWriter.newLine();
+
+            bufferedWriter.close();
+        }catch (Exception ex){
+            System.out.println("error happen");
+
+        }
+    }
+
     static void addDeposit(){
         System.out.println("Enter description for your deposit: ");
         String description = scanner.nextLine();
@@ -60,7 +86,7 @@ public class Main {
 
         Transaction transaction = new Transaction(LocalDate.now(), LocalTime.now(), description, vendor, amount);
 
-        String line = transaction.toCsvFormate();
+        String line = transaction.toCsvFormat();
 
         try{
             FileWriter fileWriter = new FileWriter("data/transactions.csv", true);
