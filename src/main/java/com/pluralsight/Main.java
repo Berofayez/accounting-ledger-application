@@ -1,105 +1,59 @@
 package com.pluralsight;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import static com.pluralsight.HomeScreen.homeScreen;
+
 public class Main {
+
+    public static ArrayList<Transaction> transactions = new ArrayList<>();
 
     static Scanner scanner = new Scanner(System.in);
 
     static void main() {
+        transactions = loadTransactions();
         homeScreen();
 
     }
 
-    static void homeScreen(){
-        while(true){
-            System.out.println("Welcome to Accounting Ledger Application");
-            System.out.println("D) Add Deposit");
-            System.out.println("P) Make Payment (Debit)");
-            System.out.println("Ledger");
-            System.out.println("E) Exit");
+    public static ArrayList<Transaction> loadTransactions(){
+        try {
+            FileReader fileReader = new FileReader("data/transactions.csv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            String userInput = scanner.nextLine();
-            switch (userInput){
-                case "D":
-                    addDeposit();
-                    break;
-                case "P":
-                    makePayment();
-                    break;
-                case "L":
-                    System.out.println("Ledger still not there");
-                    break;
-                case "E":
-                    System.out.println("Exit");
-                    return;
-                default:
-                    System.out.println("try again");
-                    break;
+            String line = bufferedReader.readLine();
+            line = bufferedReader.readLine();
+
+            while (line != null){
+
+                String[] columns = line.split("\\|");
+
+                LocalDate localDate = LocalDate.parse(columns[0]);
+                LocalTime localTime = LocalTime.parse(columns[1]);
+                String description = columns[2];
+                String vendor = columns[3];
+                double amount = Double.parseDouble(columns[4]);
+
+                Transaction transaction = new Transaction(localDate, localTime, description, vendor, amount);
+                transactions.add(transaction);
+
+                line = bufferedReader.readLine();
+
             }
-        }
+            bufferedReader.close();
 
-
-    }
-
-    static void makePayment() {
-        System.out.println("Enter description for your payment: ");
-        String description = scanner.nextLine();
-
-        System.out.println("Enter the vendor: ");
-        String vendor = scanner.nextLine();
-
-        System.out.println("Enter amount: ");
-        double amount = scanner.nextDouble();
-
-        Transaction transaction = new Transaction(LocalDate.now(), LocalTime.now(), description, vendor, -amount);
-
-        String line = transaction.toCsvFormat();
-
-        try{
-            FileWriter fileWriter = new FileWriter("data/transactions.csv", true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            bufferedWriter.write(line);
-            bufferedWriter.newLine();
-
-            bufferedWriter.close();
         }catch (Exception ex){
-            System.out.println("error happen");
+            System.out.println("error fond");
 
         }
+        return transactions;
+
     }
-
-    static void addDeposit(){
-        System.out.println("Enter description for your deposit: ");
-        String description = scanner.nextLine();
-
-        System.out.println("Enter the vendor: ");
-        String vendor = scanner.nextLine();
-
-        System.out.println("Enter amount: ");
-        double amount = scanner.nextDouble();
-
-        Transaction transaction = new Transaction(LocalDate.now(), LocalTime.now(), description, vendor, amount);
-
-        String line = transaction.toCsvFormat();
-
-        try{
-            FileWriter fileWriter = new FileWriter("data/transactions.csv", true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            bufferedWriter.write(line);
-            bufferedWriter.newLine();
-
-            bufferedWriter.close();
-        }catch (Exception ex){
-            System.out.println("error happen");
-
-        }
-    }
-
 }
