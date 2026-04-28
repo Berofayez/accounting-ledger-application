@@ -14,6 +14,8 @@ import static com.pluralsight.HomeScreen.homeScreen;
 public class Main {
 
     public static ArrayList<Transaction> transactions = new ArrayList<>();
+    public static ArrayList<Transaction> deposits = new ArrayList<>();
+    public static ArrayList<Transaction> payments = new ArrayList<>();
 
     static Scanner scanner = new Scanner(System.in);
 
@@ -43,6 +45,12 @@ public class Main {
 
                 Transaction transaction = new Transaction(localDate, localTime, description, vendor, amount);
                 transactions.add(transaction);
+
+                if(amount < 0){
+                    payments.add(transaction);
+                }else{
+                    deposits.add(transaction);
+                }
 
                 line = bufferedReader.readLine();
 

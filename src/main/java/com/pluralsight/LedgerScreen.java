@@ -3,7 +3,7 @@ package com.pluralsight;
 import java.util.Scanner;
 
 import static com.pluralsight.HomeScreen.homeScreen;
-import static com.pluralsight.Main.transactions;
+import static com.pluralsight.Main.*;
 
 public class LedgerScreen {
     static Scanner scanner = new Scanner(System.in);
@@ -43,6 +43,11 @@ public class LedgerScreen {
     }
 
     private static void displayDeposit() {
+        for(Transaction transaction: deposits){
+            System.out.println(transaction.getDate().toString() + transaction.getTime() +
+                    transaction.getDescription() + transaction.getVendor()
+                    + transaction.getAmount());
+        }
     }
 
     private static void displayAll() {
@@ -54,5 +59,10 @@ public class LedgerScreen {
     }
 
     private static void displayPayment() {
+        for(Transaction transaction: payments){
+            System.out.println(transaction.getDate().toString() + transaction.getTime() +
+                    transaction.getDescription() + transaction.getVendor()
+                    + transaction.getAmount());
+        }
     }
 }
