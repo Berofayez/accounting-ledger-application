@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import static com.pluralsight.HomeScreen.homeScreen;
 import static com.pluralsight.Main.*;
+import static com.pluralsight.ReportsScreen.reportsScreen;
 
 public class LedgerScreen {
     static Scanner scanner = new Scanner(System.in);
@@ -37,9 +38,6 @@ public class LedgerScreen {
                 break;
         }
 
-    }
-
-    private static void reportsScreen() {
     }
 
     private static void displayDeposit() {
