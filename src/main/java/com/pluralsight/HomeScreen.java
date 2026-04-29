@@ -54,22 +54,11 @@ public class HomeScreen {
         System.out.println("Enter amount: ");
         double amount = scanner.nextDouble();
 
+        scanner.nextLine();
+
         Transaction transaction = new Transaction(LocalDate.now(), LocalTime.now(), description, vendor, -amount);
 
-        String line = transaction.toCsvFormat();
-
-        try{
-            FileWriter fileWriter = new FileWriter("data/transactions.csv", true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            bufferedWriter.write(line);
-            bufferedWriter.newLine();
-
-            bufferedWriter.close();
-        }catch (Exception ex){
-            System.out.println("error happen");
-
-        }
+        saveTransaction(transaction);
     }
 
     static void addDeposit(){
@@ -82,8 +71,14 @@ public class HomeScreen {
         System.out.println("Enter amount: ");
         double amount = scanner.nextDouble();
 
+        scanner.nextLine();
+
         Transaction transaction = new Transaction(LocalDate.now(), LocalTime.now(), description, vendor, amount);
 
+        saveTransaction(transaction);
+    }
+
+    static void saveTransaction(Transaction transaction){
         String line = transaction.toCsvFormat();
 
         try{
@@ -95,8 +90,9 @@ public class HomeScreen {
 
             bufferedWriter.close();
         }catch (Exception ex){
-            System.out.println("error happen");
+            System.out.println("Error saving transaction.");
 
         }
+
     }
 }

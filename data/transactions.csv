@@ -2,14 +2,14 @@ date|time|description|vendor|amount
 2026-01-03|09:15:22|Paycheck Deposit|Employer Inc|2500.00
 2026-01-04|14:20:10|Groceries|Walmart|-86.45
 2026-01-05|08:05:33|Coffee|Starbucks|-6.75
-2026-01-06|11:45:00|Internet Bill|Comcast|-79.99
+2024-03-06|11:45:00|Internet Bill|Comcast|-79.99
 2026-01-07|16:30:14|Freelance Payment|Client A|600.00
 2026-01-08|10:12:50|Gas Refill|Shell|-48.30
 2026-01-10|13:25:18|Restaurant Lunch|Chipotle|-18.95
 2026-01-11|17:40:00|Electric Bill|Seattle Energy|-112.40
 2026-01-12|09:00:00|Refund Deposit|Amazon|35.99
 2026-01-13|19:10:42|Movie Ticket|AMC|-15.00
-2026-01-15|08:30:00|Paycheck Deposit|Employer Inc|2500.00
+2026-03-15|08:30:00|Paycheck Deposit|Employer Inc|2500.00
 2026-01-16|12:14:29|Phone Bill|T-Mobile|-65.00
 2026-01-17|15:55:10|Gym Membership|Planet Fitness|-25.00
 2026-01-18|11:22:11|Book Purchase|Barnes & Noble|-22.75
@@ -19,4 +19,5 @@ date|time|description|vendor|amount
 2026-01-24|13:16:48|Water Bill|Seattle Utilities|-54.22
 2026-01-25|10:05:00|Bonus Deposit|Employer Inc|500.00
 2026-01-27|20:45:19|Online Shopping|Target|-73.88
-
+2026-04-29|11:32:11.165019|first deposit|abeer|11.1
+2026-04-29|11:40:34|first|abeer|44.0
