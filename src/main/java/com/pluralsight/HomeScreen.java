@@ -12,14 +12,16 @@ import static com.pluralsight.LedgerScreen.ledgerScreen;
 public class HomeScreen {
     static Scanner scanner = new Scanner(System.in);
     static void homeScreen(){
-        while(true){
-            System.out.println("Welcome to Accounting Ledger Application");
+        boolean running = true;
+        while(running){
+            System.out.println("\n===== ACCOUNTING LEDGER =====");
             System.out.println("D) Add Deposit");
-            System.out.println("P) Make Payment (Debit)");
+            System.out.println("P) Make Payment");
             System.out.println("L) Ledger");
             System.out.println("E) Exit");
+            System.out.print("Choose an option: ");
 
-            String userInput = scanner.nextLine();
+            String userInput = scanner.nextLine().trim().toUpperCase();
             switch (userInput){
                 case "D":
                     addDeposit();
@@ -31,11 +33,11 @@ public class HomeScreen {
                     ledgerScreen();
                     break;
                 case "E":
-                    System.out.println("Exit");
-                    return;
-                default:
-                    System.out.println("try again");
+                    System.out.println("Thank you for using Accounting Ledger.");
+                    running = false;
                     break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
             }
         }
 

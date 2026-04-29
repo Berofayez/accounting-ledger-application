@@ -59,8 +59,13 @@ public class Transaction {
     }
 
     public String toCsvFormat(){
-        String toCsv = date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
-        return toCsv;
+        return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
 
     }
+
+    @Override
+    public String toString(){
+        return String.format("%-12s %-10s %-25s %-20s %10.2f", date, time, description, vendor, amount);
+    }
+
 }

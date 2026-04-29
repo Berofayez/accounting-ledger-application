@@ -49,10 +49,12 @@ public class LedgerScreen {
     }
 
     private static void displayAll() {
+        System.out.println("========== PAYMENTS ==========");
+        System.out.printf("%-12s %-10s %-25s %-20s %10s%n",
+                "Date", "Time", "Description", "Vendor", "Amount");
+        System.out.println("-------------------------------------------------------------------");
         for(Transaction transaction: transactions){
-            System.out.println(transaction.getDate().toString() + transaction.getTime() +
-                    transaction.getDescription() + transaction.getVendor()
-                    + transaction.getAmount());
+            System.out.println(transaction);
         }
     }
 
