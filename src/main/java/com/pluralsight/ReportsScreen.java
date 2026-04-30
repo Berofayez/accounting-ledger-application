@@ -8,7 +8,9 @@ public class ReportsScreen {
     static Scanner scanner = new Scanner(System.in);
     static void reportsScreen(){
 
+
         while (true) {
+            System.out.println("\n========== REPORTS MENU ==========");
 
             System.out.println("1) Month To Date");
             System.out.println("2) Previous Month");
@@ -17,6 +19,7 @@ public class ReportsScreen {
             System.out.println("5) Search by Vendor");
             System.out.println("6) Custom Search");
             System.out.println("0) Back");
+            System.out.print("Choose an option: ");
 
             int userInput = Integer.parseInt(scanner.nextLine());
 
@@ -38,6 +41,7 @@ public class ReportsScreen {
                     break;
                 case 6:
                     customSearch();
+                    break;
                 case 0:
                     return;
                 default:
@@ -48,7 +52,9 @@ public class ReportsScreen {
 
     }
 
-    private static void customSearch() {
+    public static void customSearch() {
+
+        System.out.println("\n========== CUSTOM SEARCH ==========");
 
         System.out.println("Enter Start Date (yyyy-MM-dd) or press Enter:");
         String startDateString = scanner.nextLine().trim();
@@ -190,7 +196,6 @@ public class ReportsScreen {
 
     private static void searchByVendor() {
 
-        scanner.nextLine();
         System.out.println("Enter the vendor");
         String vendor = scanner.nextLine();
 
