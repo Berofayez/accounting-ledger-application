@@ -7,6 +7,7 @@ import java.time.LocalTime;
 import java.util.Scanner;
 
 import static com.pluralsight.LedgerScreen.ledgerScreen;
+import static com.pluralsight.Main.transactions;
 
 
 public class HomeScreen {
@@ -80,6 +81,7 @@ public class HomeScreen {
 
     static void saveTransaction(Transaction transaction){
         String line = transaction.toCsvFormat();
+        transactions.add(transaction);
 
         try{
             FileWriter fileWriter = new FileWriter("data/transactions.csv", true);
