@@ -91,33 +91,23 @@ public class ReportsScreen {
 
 
         for(Transaction transaction : transactions){
-            if(startDate != null){
-                if(transaction.getDate().isBefore(startDate)){
-                    continue;
-                }
+            if(startDate != null && transaction.getDate().isBefore(startDate)){
+                continue;
             }
-            if(endDate != null){
-                if(transaction.getDate().isAfter(endDate)){
-                    continue;
-                }
+            if(endDate != null && transaction.getDate().isAfter(endDate) ){
+                continue;
             }
 
-            if(!description.isEmpty()){
-                if(!transaction.getDescription().contains(description)){
-                    continue;
-                }
+            if(!description.isEmpty() && !transaction.getDescription().contains(description)){
+                continue;
             }
 
-            if(!vendor.isEmpty()){
-                if(!transaction.getVendor().equalsIgnoreCase(vendor)){
-                    continue;
-                }
+            if(!vendor.isEmpty() && !transaction.getVendor().equalsIgnoreCase(vendor)){
+                continue;
             }
 
-            if(amount != null){
-                if(transaction.getAmount() != amount){
-                    continue;
-                }
+            if(amount != null && transaction.getAmount() != amount ){
+                continue;
             }
 
             if (!found) {

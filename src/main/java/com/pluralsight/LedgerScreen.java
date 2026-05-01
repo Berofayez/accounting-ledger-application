@@ -1,8 +1,6 @@
 package com.pluralsight;
 
 import java.util.Scanner;
-
-import static com.pluralsight.HomeScreen.homeScreen;
 import static com.pluralsight.Main.*;
 import static com.pluralsight.ReportsScreen.reportsScreen;
 
@@ -12,6 +10,7 @@ public class LedgerScreen {
 
         while (true) {
 
+            System.out.println("\n========== LEDGER MENU ==========");
             System.out.println("A) All ");
             System.out.println("D) Deposits ");
             System.out.println("P) Payments ");
